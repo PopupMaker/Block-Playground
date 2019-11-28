@@ -16,11 +16,12 @@ const title = __( 'Popup Trigger', 'popup-maker' );
 
 export const name = `popup-maker/popup-trigger`;
 export const settings = {
+	name,
 	title,
 	tagName: 'span',
 	className: 'popup-trigger',
 	attributes: {
-		popup: 'data-popup-id',
+		popupId: 'data-popup-id',
 		doDefault: 'data-do-default',
 	},
 	edit: withSpokenMessages( class TriggerEdit extends Component {
