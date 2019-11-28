@@ -12,21 +12,12 @@ import { RichTextShortcut, RichTextToolbarButton } from '@wordpress/block-editor
 import LogoIcon from '../../icons/logo';
 import InlinePopupTriggerUI from './inline';
 
-/**
- * Style Dependencies.
- *
- * import './editor.scss';
- */
-
-
-const name = 'popup-trigger';
 const title = __( 'Popup - Open', 'popup-maker' );
 const shortcut = 't';
 const shortcutType = 'primary';
-const type = `popup-maker/${ name }`;
 
-const trigger = {
-	type,
+export const name = `popup-maker/popup-trigger`;
+export const settings = {
 	title,
 	tagName: 'span',
 	className: 'popup-trigger',
@@ -57,7 +48,7 @@ const trigger = {
 		onRemoveFormat() {
 			const { value, onChange, speak } = this.props;
 
-			onChange( removeFormat( value, type ) );
+			onChange( removeFormat( value, name ) );
 			speak( __( 'Trigger removed.', 'popup-maker' ), 'assertive' );
 		}
 
@@ -83,7 +74,7 @@ const trigger = {
 					/>
 
 					<InlinePopupTriggerUI
-						type={ type }
+						type={ name }
 						addingTrigger={ this.state.addingTrigger }
 						stopAddingTrigger={ this.stopAddingTrigger }
 						isActive={ isActive }
@@ -97,5 +88,3 @@ const trigger = {
 		}
 	} ),
 };
-
-export default trigger;
