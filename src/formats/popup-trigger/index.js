@@ -12,9 +12,7 @@ import { RichTextShortcut, RichTextToolbarButton } from '@wordpress/block-editor
 import LogoIcon from '../../icons/logo';
 import InlinePopupTriggerUI from './inline';
 
-const title = __( 'Popup - Open', 'popup-maker' );
-const shortcut = 't';
-const shortcutType = 'primary';
+const title = __( 'Popup Trigger', 'popup-maker' );
 
 export const name = `popup-maker/popup-trigger`;
 export const settings = {
@@ -23,7 +21,7 @@ export const settings = {
 	className: 'popup-trigger',
 	attributes: {
 		popup: 'data-popup-id',
-		doDefault: false,
+		doDefault: 'data-do-default',
 	},
 	edit: withSpokenMessages( class TriggerEdit extends Component {
 		constructor() {
@@ -54,27 +52,36 @@ export const settings = {
 
 		render() {
 			const { isActive, activeAttributes, value, onChange } = this.props;
-			const callback = isActive ? this.onRemoveFormat : this.addTrigger;
 
 			return (
 				<>
 					<RichTextShortcut
-						type={ shortcutType }
-						character={ shortcut }
-						onUse={ callback }
+						type="primary"
+						character="t"
+						onUse={ this.addTrigger }
 					/>
-
-					<RichTextToolbarButton
+					<RichTextShortcut
+						type="primaryShift"
+						character="t"
+						onUse={ this.onRemoveFormat }
+					/>
+					{ isActive && <RichTextToolbarButton
 						icon={ LogoIcon }
-						title={ isActive ? __( 'Remove Trigger', 'popup-maker' ) : title }
-						onClick={ callback }
+						title={ __( 'Remove Trigger', 'popup-maker' ) }
+						onClick={ this.onRemoveFormat }
 						isActive={ isActive }
-						shortcutType={ shortcutType }
-						shortcutCharacter={ shortcut }
-					/>
-
+						shortcutType="primaryShift"
+						shortcutCharacter="t"
+					/> }
+					{ ! isActive && <RichTextToolbarButton
+						icon={ LogoIcon }
+						title={ title }
+						onClick={ this.addTrigger }
+						isActive={ isActive }
+						shortcutType="primary"
+						shortcutCharacter="t"
+					/> }
 					<InlinePopupTriggerUI
-						type={ name }
 						addingTrigger={ this.state.addingTrigger }
 						stopAddingTrigger={ this.stopAddingTrigger }
 						isActive={ isActive }
@@ -82,7 +89,6 @@ export const settings = {
 						value={ value }
 						onChange={ onChange }
 					/>
-
 				</>
 			);
 		}
