@@ -26,6 +26,8 @@ export default class PopupSelectControl extends Component {
 				<SelectControl
 					label={ __( 'Select Popup', 'popup-maker' ) }
 					hideLabelFromVision={ true }
+					value={ value }
+					onChange={ onChangeInputValue }
 					options={
 						[
 							{
@@ -34,16 +36,14 @@ export default class PopupSelectControl extends Component {
 							},
 							...popups.map( ( popup ) => {
 								return {
-									value: popup.ID,
+									value: `${ popup.ID }`,
 									label: popup.post_title,
 									//disabled: true
 								};
 							} ),
 						]
 					}
-
 					{ ...props }
-
 				/>
 			</div>
 		);
