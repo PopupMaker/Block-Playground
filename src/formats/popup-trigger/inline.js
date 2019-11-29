@@ -173,8 +173,20 @@ class InlinePopupTriggerUI extends Component {
 	}
 
 	render() {
-		const { isActive, activeAttributes, addingTrigger, value } = this.props;
+		/**
+		 * @const {boolean} isActive              True when the cursor is inside an existing trigger
+		 * @const {boolean} addingTrigger         True when the user has clicked the add trigger button
+		 * @const {Object}  activeAttributes      Object containing the current attribute values for the selected text.
+		 * @const {Object}  value                 Object containing the current rich text selection object containing position & formats.
+		 * @const {Object}  value.activeFormats   Array of registered & active WPFormat objects.
+		 * @const {number}  value.formats         ?? Array of format history for the active text.
+		 * @const {number}  value.start           Start offset of selected text
+		 * @const {number}  value.end             End offset of selected text.
+		 * @const {string}  value.text            Selected text.
+		 */
+		const { isActive, /* activeAttributes, */ addingTrigger, value } = this.props;
 
+		// If the user is not adding a trigger from the toolbar or actively inside render nothing.
 		if ( ! isActive && ! addingTrigger ) {
 			return null;
 		}
