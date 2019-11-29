@@ -80,6 +80,22 @@
 	}
 }
 
-.block-editor-popup-trigger-popover__popup-editor {
+.block-editor-popup-trigger-popover__popup-editor,
+.block-editor-popup-trigger-popover__popup-viewer {
 	display: flex;
+}
+
+.block-editor-popup-trigger-popover__popup-viewer-text {
+	margin: $grid-size - $border-width;
+	flex-grow: 1;
+	flex-shrink: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 150px;
+	max-width: 500px;
+
+	&.has-invalid-link {
+		color: $alert-red;
+	}
 }
