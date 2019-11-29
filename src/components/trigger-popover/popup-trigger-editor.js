@@ -30,9 +30,8 @@ export default function PopupTriggerEditor( {
 			<PopupSelectControl
 				value={ value }
 				onChange={ onChangeInputValue }
-
 				// postType="popup"
-				autocompleteRef={ autocompleteRef }
+				// autocompleteRef={ autocompleteRef }
 			/>
 			<IconButton icon="editor-break" label={ __( 'Apply', 'popup-maker' ) } type="submit" />
 		</form>
