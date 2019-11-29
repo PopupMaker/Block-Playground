@@ -71,12 +71,17 @@ class InlinePopupTriggerUI extends Component {
 
 		this.state = {
 			doDefault: false,
-			popupId: 0,
+			popupId: '',
 		};
 	}
 
 	static getDerivedStateFromProps( props, state ) {
-		const { activeAttributes: { popupId, doDefault } } = props;
+		let { activeAttributes: { popupId = '', doDefault = false } } = props;
+
+		// Convert string value to boolean for comparison.
+		if ( _.isString( doDefault ) ) {
+			doDefault = '1' === doDefault;
+		}
 
 		if ( ! isShowingInput( props, state ) ) {
 			const update = {};
