@@ -98,6 +98,13 @@ class InlinePopupTriggerUI extends Component {
 		return null;
 	}
 
+	onKeyDown( event ) {
+		if ( [ LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER ].indexOf( event.keyCode ) > -1 ) {
+			// Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
+			event.stopPropagation();
+		}
+	}
+
 	setPopupID( popupId ) {
 		//const { activeAttributes: { doDefault = false }, value, onChange, type } = this.props;
 
