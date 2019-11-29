@@ -1,16 +1,18 @@
 /**
  * WordPress dependencies
  */
-import { Component, createRef, useMemo } from '@wordpress/element';
-import { getRectangleFromRange } from '@wordpress/dom';
-import { ToggleControl, withSpokenMessages } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { Component, createRef, useMemo } from '@wordpress/element';
+import { ToggleControl, withSpokenMessages } from '@wordpress/components';
+import { BACKSPACE, DOWN, ENTER, LEFT, RIGHT, UP } from '@wordpress/keycodes';
+import { getRectangleFromRange } from '@wordpress/dom';
 import { applyFormat, create, insert, isCollapsed } from '@wordpress/rich-text';
 /**
  * Internal dependencies
  */
+import { createTriggerFormat } from './utils';
 import TriggerPopover from '../../components/trigger-popover';
-import TriggerPopupEditor from '../../components/trigger-popover/trigger-popup-editor';
+import PopupTriggerEditor from '../../components/trigger-popover/popup-trigger-editor';
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -206,7 +208,7 @@ class InlinePopupTriggerUI extends Component {
 					/>
 				) }
 			>
-				<TriggerPopupEditor
+				<PopupTriggerEditor
 					className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
 					value={ popupId }
 					onChangeInputValue={ this.setPopupID }

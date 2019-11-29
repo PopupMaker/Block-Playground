@@ -12,7 +12,7 @@ import { IconButton } from '@wordpress/components';
  */
 import PopupSelectControl from '../popup-select-control';
 
-export default function TriggerPopupEditor( {
+export default function PopupTriggerEditor( {
 	autocompleteRef,
 	className,
 	onChangeInputValue,
