@@ -13,6 +13,7 @@ import { applyFormat, create, insert, isCollapsed } from '@wordpress/rich-text';
 import { createTriggerFormat } from './utils';
 import TriggerPopover from '../../components/trigger-popover';
 import PopupTriggerEditor from '../../components/trigger-popover/popup-trigger-editor';
+import PopupTriggerViewer from '../../components/trigger-popover/popup-trigger-viewer';
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -210,15 +211,25 @@ class InlinePopupTriggerUI extends Component {
 					/>
 				) }
 			>
-				<PopupTriggerEditor
-					className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-					value={ popupId }
-					onChangeInputValue={ this.setPopupID }
-					// onKeyDown={ this.onKeyDown }
-					// onKeyPress={ stopKeyPropagation }
-					onSubmit={ this.submitTrigger }
-					autocompleteRef={ this.autocompleteRef }
-				/>
+				{ showInput ? (
+					<PopupTriggerEditor
+						className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+						value={ popupId }
+						onChangeInputValue={ this.setPopupID }
+						onKeyDown={ this.onKeyDown }
+						onKeyPress={ stopKeyPropagation }
+						onSubmit={ this.submitTrigger }
+						autocompleteRef={ this.autocompleteRef }
+					/>
+				) : (
+					<PopupTriggerViewer
+						className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+						onKeyPress={ stopKeyPropagation }
+						popupId={ popupId }
+						onEditLinkClick={ this.editTrigger }
+						// linkClassName=""
+					/>
+				) }
 			</TriggerPopoverAtText>
 		);
 	}
