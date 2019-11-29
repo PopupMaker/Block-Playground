@@ -8,7 +8,7 @@ import classnames from 'classnames';
 import { __, sprintf } from '@wordpress/i18n';
 import { IconButton } from '@wordpress/components';
 
-const { popups } = window.pum_block_editor_vars;
+const { popups } = window.pum_block_editor_vars || [];
 
 function getPopupById( popupId = 0 ) {
 	popupId = parseInt( popupId ) || 0;
