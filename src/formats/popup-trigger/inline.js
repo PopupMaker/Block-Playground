@@ -116,13 +116,10 @@ class InlinePopupTriggerUI extends Component {
 
 		// Apply now if URL is not being edited.
 		if ( ! isShowingInput( this.props, this.state ) ) {
-			onChange( applyFormat( value, {
-				type,
-				attributes: {
-					'data-popup-id': popupId,
-					'data-do-default': doDefault,
-				},
-			} ) );
+			onChange( applyFormat( value, createTriggerFormat( {
+				popupId,
+				doDefault,
+			} ) ) );
 		}
 	}
 
@@ -134,16 +131,10 @@ class InlinePopupTriggerUI extends Component {
 	submitTrigger( event ) {
 		const { isActive, value, onChange, speak } = this.props;
 		const { popupId, doDefault } = this.state;
-		// const selectedText = getTextContent( slice( value ) );
-		const doDefaultClass = doDefault ? 'pum-do-default' : '';
-		const format = {
-			type,
-			attributes: {
-				class: `popmake-${ popupId } ${ doDefaultClass }`,
-				'data-popup-id': popupId,
-				'data-do-default': doDefault.toString(),
-			},
-		};
+		const format = createTriggerFormat( {
+			popupId,
+			doDefault,
+		} );
 
 		event.preventDefault();
 
