@@ -110,7 +110,7 @@ class InlinePopupTriggerUI extends Component {
 	}
 
 	setDoDefault( doDefault ) {
-		const { activeAttributes: { popupId = 0 }, value, onChange, type } = this.props;
+		const { activeAttributes: { popupId = 0 }, value, onChange } = this.props;
 
 		this.setState( { doDefault } );
 
@@ -132,7 +132,7 @@ class InlinePopupTriggerUI extends Component {
 	}
 
 	submitTrigger( event ) {
-		const { isActive, value, onChange, speak, type } = this.props;
+		const { isActive, value, onChange, speak } = this.props;
 		const { popupId, doDefault } = this.state;
 		// const selectedText = getTextContent( slice( value ) );
 		const doDefaultClass = doDefault ? 'pum-do-default' : '';
