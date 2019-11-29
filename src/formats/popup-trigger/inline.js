@@ -106,20 +106,7 @@ class InlinePopupTriggerUI extends Component {
 	}
 
 	setPopupID( popupId ) {
-		//const { activeAttributes: { doDefault = false }, value, onChange, type } = this.props;
-
 		this.setState( { popupId } );
-		//
-		// // Apply now if URL is not being edited.
-		// if ( ! isShowingInput( this.props, this.state ) ) {
-		// 	onChange( applyFormat( value, {
-		// 		type,
-		// 		attributes: {
-		// 			'data-popup-id': popupId.toString(),
-		// 			'data-do-default': doDefault.toString(),
-		// 		},
-		// 	} ) );
-		// }
 	}
 
 	setDoDefault( doDefault ) {
