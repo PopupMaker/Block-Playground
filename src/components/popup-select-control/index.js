@@ -18,31 +18,34 @@ export default class PopupSelectControl extends Component {
 			autocompleteRef,
 			onChangeInputValue,
 			value,
+			label = __( 'Select Popup', 'popup-maker' ),
+			emptyValueLabel = __( 'Choose a popup', 'popup-maker' ),
+			hideLabelFromVision = false,
 			...props
 		} = this.props;
+
+		const options = [
+			{
+				value: null,
+				label: emptyValueLabel,
+			},
+			...popups.map( ( popup ) => {
+				return {
+					value: `${ popup.ID }`,
+					label: popup.post_title,
+					//disabled: true
+				};
+			} ),
+		];
 
 		return (
 			<div className="block-editor-popup-select-input">
 				<SelectControl
-					label={ __( 'Select Popup', 'popup-maker' ) }
-					hideLabelFromVision={ true }
+					label={ label }
+					hideLabelFromVision={ hideLabelFromVision }
 					value={ value }
 					onChange={ onChangeInputValue }
-					options={
-						[
-							{
-								value: null,
-								label: __( 'Which popup should open?', 'popup-maker' ),
-							},
-							...popups.map( ( popup ) => {
-								return {
-									value: `${ popup.ID }`,
-									label: popup.post_title,
-									//disabled: true
-								};
-							} ),
-						]
-					}
+					options={ options }
 					{ ...props }
 				/>
 			</div>

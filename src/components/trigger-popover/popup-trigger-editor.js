@@ -28,6 +28,8 @@ export default function PopupTriggerEditor( {
 			{ ...props }
 		>
 			<PopupSelectControl
+				emptyValueLabel={ __( 'Which popup should open?', 'popup-maker' ) }
+				hideLabelFromVision={ true }
 				value={ value }
 				onChange={ onChangeInputValue }
 				// postType="popup"
