@@ -58,12 +58,12 @@ export const settings = {
 				<>
 					<RichTextShortcut
 						type="primary"
-						character="t"
+						character="["
 						onUse={ this.addTrigger }
 					/>
 					<RichTextShortcut
 						type="primaryShift"
-						character="t"
+						character="["
 						onUse={ this.onRemoveFormat }
 					/>
 					{ isActive && <RichTextToolbarButton
@@ -72,7 +72,7 @@ export const settings = {
 						onClick={ this.onRemoveFormat }
 						isActive={ isActive }
 						shortcutType="primaryShift"
-						shortcutCharacter="t"
+						shortcutCharacter="["
 					/> }
 					{ ! isActive && <RichTextToolbarButton
 						icon={ LogoIcon }
@@ -80,7 +80,7 @@ export const settings = {
 						onClick={ this.addTrigger }
 						isActive={ isActive }
 						shortcutType="primary"
-						shortcutCharacter="t"
+						shortcutCharacter="["
 					/> }
 					<InlinePopupTriggerUI
 						addingTrigger={ this.state.addingTrigger }
