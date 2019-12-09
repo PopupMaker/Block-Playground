@@ -18,6 +18,16 @@
 	padding-left: 2px;
 }
 
+
+.block-editor-popup-trigger-popover .components-notice.is-dismissible {
+	margin: 0;
+	padding-right: 0;
+
+	.components-notice__content {
+		margin: 0;
+	}
+}
+
 .block-editor-popup-trigger-popover__row {
 	display: flex;
 }

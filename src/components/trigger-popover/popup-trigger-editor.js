@@ -32,6 +32,7 @@ export default function PopupTriggerEditor( {
 				hideLabelFromVision={ true }
 				value={ value }
 				onChange={ onChangeInputValue }
+				required={ true }
 				// postType="popup"
 				// autocompleteRef={ autocompleteRef }
 			/>

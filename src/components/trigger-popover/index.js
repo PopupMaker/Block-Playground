@@ -35,6 +35,7 @@ export default class TriggerPopover extends Component {
 			renderSettings,
 			position = 'bottom center',
 			focusOnMount = 'firstElement',
+			noticeUI,
 			...popoverProps
 		} = this.props;
 
@@ -52,6 +53,7 @@ export default class TriggerPopover extends Component {
 				{ ...popoverProps }
 			>
 				<div className="block-editor-popup-trigger-popover__input-container">
+					{ noticeUI }
 					<div className="editor-popup-trigger-popover__row block-editor-popup-trigger-popover__row">
 						{ children }
 						{ !! renderSettings && (

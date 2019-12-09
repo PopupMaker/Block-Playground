@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component, createRef, useMemo } from '@wordpress/element';
-import { ToggleControl, withSpokenMessages } from '@wordpress/components';
+import { ToggleControl, withNotices, withSpokenMessages } from '@wordpress/components';
 import { BACKSPACE, DOWN, ENTER, LEFT, RIGHT, UP } from '@wordpress/keycodes';
 import { getRectangleFromRange } from '@wordpress/dom';
 import { applyFormat, create, insert, isCollapsed } from '@wordpress/rich-text';
@@ -107,6 +107,18 @@ class InlinePopupTriggerUI extends Component {
 	}
 
 	setPopupID( popupId ) {
+		const { noticeOperations } = this.props;
+
+		noticeOperations.removeNotice( 'missingPopupId' );
+
+		if ( '' === popupId ) {
+			noticeOperations.createNotice( {
+				id: 'missingPopupId',
+				status: 'error',
+				content: __( 'Choose a popup or the trigger won\'t function.', 'popup-maker' ),
+			} );
+		}
+
 		this.setState( { popupId } );
 	}
 
@@ -185,12 +197,14 @@ class InlinePopupTriggerUI extends Component {
 		 * @const {number}  value.end             End offset of selected text.
 		 * @const {string}  value.text            Selected text.
 		 */
-		const { isActive, /* activeAttributes, */ addingTrigger, value } = this.props;
+		const { isActive, /* activeAttributes, */ addingTrigger, value, noticeUI, noticeList } = this.props;
 
 		// If the user is not adding a trigger from the toolbar or actively inside render nothing.
 		if ( ! isActive && ! addingTrigger ) {
 			return null;
 		}
+
+		console.log( noticeList );
 
 		const { popupId, doDefault } = this.state;
 		const showInput = isShowingInput( this.props, this.state );
@@ -202,6 +216,7 @@ class InlinePopupTriggerUI extends Component {
 				addingTrigger={ addingTrigger }
 				onFocusOutside={ this.onFocusOutside }
 				onClose={ this.resetState }
+				noticeUI={ noticeUI }
 				focusOnMount={ showInput ? 'firstElement' : false }
 				renderSettings={ () => (
 					<ToggleControl
@@ -235,4 +250,4 @@ class InlinePopupTriggerUI extends Component {
 	}
 }
 
-export default withSpokenMessages( InlinePopupTriggerUI );
+export default withSpokenMessages( withNotices( InlinePopupTriggerUI ) );
