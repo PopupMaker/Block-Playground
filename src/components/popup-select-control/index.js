@@ -26,7 +26,7 @@ export default class PopupSelectControl extends Component {
 
 		const options = [
 			{
-				value: null,
+				value: '',
 				label: emptyValueLabel,
 			},
 			...popups.map( ( popup ) => {
