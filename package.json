@@ -23,6 +23,7 @@
     "@wordpress/components": "^8.4.0",
     "@wordpress/compose": "^3.8.0",
     "@wordpress/dom": "^2.6.0",
+    "@wordpress/dom-ready": "^2.5.1",
     "@wordpress/element": "^2.9.0",
     "@wordpress/format-library": "^1.10.0",
     "@wordpress/hooks": "^2.6.0",
@@ -41,6 +42,8 @@
     "sass-loader": "^7.1.0"
   },
   "dependencies": {
+    "@wordpress/block-library": "^2.10.0",
+    "@wordpress/data": "^4.10.0",
     "react-select": "^3.0.8"
   }
 }
