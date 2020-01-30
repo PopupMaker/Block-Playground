@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-v3",
   "devDependencies": {
     "@wordpress/base-styles": "^1.0.0",
     "@wordpress/block-editor": "^3.3.0",
