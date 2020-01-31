@@ -18,7 +18,6 @@
 	padding-left: 2px;
 }
 
-
 .block-editor-popup-trigger-popover .components-notice.is-dismissible {
 	margin: 0;
 	padding-right: 0;
@@ -53,6 +52,7 @@
 		box-shadow: none;
 
 		> svg {
+
 			@include formatting-button-style__hover;
 		}
 	}
@@ -61,6 +61,7 @@
 		box-shadow: none;
 
 		> svg {
+
 			@include formatting-button-style__focus;
 		}
 	}

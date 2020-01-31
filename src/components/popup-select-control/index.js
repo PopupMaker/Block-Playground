@@ -12,10 +12,8 @@ import { __ } from '@wordpress/i18n';
 const { popups } = window.pum_block_editor_vars;
 
 export default class PopupSelectControl extends Component {
-
 	render() {
 		const {
-			autocompleteRef,
 			onChangeInputValue,
 			value,
 			label = __( 'Select Popup', 'popup-maker' ),

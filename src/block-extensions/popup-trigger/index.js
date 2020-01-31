@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import classnames from 'classnames';
+
 /**
  * WordPress Dependencies
  */
@@ -11,6 +12,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { Icon, Panel, PanelBody, PanelRow, Tooltip } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import PopupSelectControl from '../../components/popup-select-control';
+
 /**
  * Internal dependencies
  */
@@ -50,18 +52,15 @@ function isAllowedForBlockType( name ) {
  * @return {Object} settings Modified settings.
  */
 function addAttributes( settings ) {
-
 	//check if object exists for old Gutenberg version compatibility
 	//add allowedBlocks restriction
 	if ( typeof settings.attributes !== 'undefined' && isAllowedForBlockType( settings.name ) ) {
-
 		settings.attributes = Object.assign( settings.attributes, {
 			openPopupId: {
 				type: 'string',
 				default: '',
 			},
 		} );
-
 	}
 
 	return settings;
@@ -70,18 +69,14 @@ function addAttributes( settings ) {
 /**
  * Add mobile visibility controls on Advanced Block Panel.
  *
- * @param {function} BlockEdit Block edit component.
+ * @param {Function} BlockEdit Block edit component.
  *
- * @return {function} BlockEdit Modified block edit component.
+ * @return {Function} BlockEdit Modified block edit component.
  */
 const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
 		const { openPopupId } = attributes;
-
-		const onSelect = ( tabName ) => {
-			console.log( 'Selecting tab', tabName );
-		};
 
 		return (
 			<>
@@ -105,9 +100,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 												position="top"
 												text={ __( 'This method does not work well with all block types.', 'popup-maker' ) }
 											>
-												<a
-													href="#" target="_blank"
-												>
+												<a href="https://docs.wppopupmaker.com/article/395-trigger-click-open-overview-methods" target="_blank" rel="noopener noreferrer">
 													<Icon
 														size="16"
 														icon="editor-help"
@@ -144,7 +137,6 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} extraProps Modified block element.
  */
 function applyTriggerClass( extraProps, blockType, attributes ) {
-
 	const { openPopupId } = attributes;
 
 	//check if attribute exists for old Gutenberg version compatibility

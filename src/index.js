@@ -3,11 +3,10 @@ import './block-extensions';
 import './block-styles';
 import './blocks';
 
-( function ( $ ) {
+( ( $ ) => {
 	function changeBodyClass( newThemeId ) {
 		const body = document.getElementsByTagName( 'body' )[ 0 ];
-		let matches = [];
-		body.classList.forEach( function ( value ) {
+		body.classList.forEach( ( value ) => {
 			if ( /^pum-theme-.+/.test( value ) ) {
 				body.classList.remove( value );
 			}
@@ -22,4 +21,4 @@ import './blocks';
 			changeBodyClass( $( e.target ).val() );
 		} ), 300 );
 	} );
-}( jQuery ) );
+} )( window.jQuery );
