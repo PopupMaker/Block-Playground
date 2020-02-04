@@ -1,10 +1,11 @@
-//import Select from 'react-select/src/Select';
 /**
  * WordPress dependencies
  */
 import { SelectControl } from '@wordpress/components';
 import { Component } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+import './editor.scss';
 
 /**
  * Internal vars.

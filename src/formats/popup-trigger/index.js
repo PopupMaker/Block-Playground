@@ -12,6 +12,8 @@ import { RichTextShortcut, RichTextToolbarButton } from '@wordpress/block-editor
 import LogoIcon from '../../icons/logo';
 import InlinePopupTriggerUI from './inline';
 
+import './editor.scss';
+
 const title = __( 'Popup Trigger', 'popup-maker' );
 
 export const name = `popup-maker/popup-trigger`;
