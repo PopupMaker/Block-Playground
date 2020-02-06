@@ -6,7 +6,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-import './style.scss';
+import './styles.scss';
 
 /**
  * Either allowedBlocks or excludedBlocks should be used, not both.

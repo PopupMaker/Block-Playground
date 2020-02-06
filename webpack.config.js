@@ -10,7 +10,7 @@ const production = process.env.NODE_ENV === '';
 const buildList = {
 	'block-editor': {
 		entry: path.resolve( process.cwd(), 'src', 'index.js' ),
-		cssChunks: { 'style': 'block-styles', 'editor': 'block-editor-styles' },
+		cssChunks: { 'styles': 'block-styles', 'editor': 'block-editor-styles' },
 	},
 };
 
@@ -29,7 +29,7 @@ const config = webpackMerge.strategy(
 	optimization: {
 		splitChunks: {
 			cacheGroups: {
-				// Creats a new cache group for each cssChunk such as import './style.scss'; or import './editor.scss';
+				// Create a new cache group for each cssChunk such as import './style.scss'; or import './editor.scss';
 				...transform( buildList, ( cacheGroups = {}, build, buildName ) => {
 					if ( undefined !== build.cssChunks ) {
 						forIn( build.cssChunks, ( filename, chunkName ) => {
@@ -58,6 +58,7 @@ const config = webpackMerge.strategy(
 						if ( build.cssChunks ) {
 							forIn( build.cssChunks, ( fileName, chunkName ) => {
 								delete compilation.assets[ fileName + '.js' ];
+								delete compilation.assets[ fileName + '.js.map' ];
 							} );
 						}
 					} );
