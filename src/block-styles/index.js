@@ -29,13 +29,12 @@ function isAllowedForBlockType( name, rules ) {
 
 function isAllowedForPostType( rules ) {
 	const { allowedPostTypes = [], excludedPostTypes = [] } = rules;
-	const postType = select( 'core/editor' ).getCurrentPostType();
-
-	console.log( postType );
 
 	if ( ! allowedPostTypes.length && ! excludedPostTypes.length ) {
 		return true;
 	}
+
+	const postType = select( 'core/editor' ).getCurrentPostType();
 
 	if ( allowedPostTypes.length ) {
 		return allowedPostTypes.includes( postType );
@@ -46,7 +45,6 @@ function isAllowedForPostType( rules ) {
 	}
 
 	return true;
-
 }
 
 const styles = [

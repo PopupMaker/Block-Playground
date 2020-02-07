@@ -1,10 +1,11 @@
 .popup-trigger[data-popup-id] {
-	border-bottom: 1px dashed green;
+	border-bottom: 1px dashed #9aba27;
 }
 
 .popup-trigger[data-popup-id]::after {
+
 	/*background: url("/wp-content/plugins/popup-maker/assets/images/logo.png") bottom center no-repeat;*/
-	background: url("/wp-content/plugins/block-playground/logo2.svg") bottom center no-repeat;
+	background: url(/wp-content/plugins/block-playground/logo2.svg) bottom center no-repeat;
 	display: inline-block;
 	width: 0.9em;
 	height: 0.9em;
@@ -17,17 +18,7 @@
 	touch-action: none;
 }
 
-.components-dropdown-menu__menu .components-dropdown-menu__menu-item:not(:disabled):not([aria-disabled=true]):not(.is-default).is-active > svg.popup-trigger-button-svg,
-.components-dropdown-menu__menu .components-menu-item:not(:disabled):not([aria-disabled=true]):not(.is-default).is-active > svg.popup-trigger-button-svg {
+.components-dropdown-menu__menu .components-dropdown-menu__menu-item:not(:disabled):not([aria-disabled="true"]):not(.is-default).is-active > svg.popup-trigger-button-svg,
+.components-dropdown-menu__menu .components-menu-item:not(:disabled):not([aria-disabled="true"]):not(.is-default).is-active > svg.popup-trigger-button-svg {
 	background: #ededed;
 }
-
-
-//.components-popover.inline-popup-selector-popover .components-base-control .components-base-control__field {
-//	margin-bottom: 0;
-//}
-//
-//.components-popover.inline-popup-selector-popover .components-base-control .components-base-control__field select {
-//	margin: 0;
-//}
-

@@ -13,7 +13,6 @@ import { IconButton } from '@wordpress/components';
 import PopupSelectControl from '../popup-select-control';
 
 export default function PopupTriggerEditor( {
-	autocompleteRef,
 	className,
 	onChangeInputValue,
 	value,
@@ -34,7 +33,6 @@ export default function PopupTriggerEditor( {
 				onChange={ onChangeInputValue }
 				required={ true }
 				// postType="popup"
-				// autocompleteRef={ autocompleteRef }
 			/>
 			<IconButton icon="editor-break" label={ __( 'Apply', 'popup-maker' ) } type="submit" />
 		</form>

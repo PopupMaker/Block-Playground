@@ -35,6 +35,7 @@ $input-size: 300px;
 
 		/* Fonts smaller than 16px causes mobile safari to zoom. */
 		font-size: $mobile-text-min-font-size;
+
 		@include break-small {
 			font-size: $default-font-size;
 		}
