@@ -68,3 +68,17 @@ function block_playground_register_block_assets() {
 }
 
 add_action( 'enqueue_block_assets', 'block_playground_register_block_assets' );
+
+add_filter( 'admin_body_class', function ( $classes = '' ) {
+	if ( pum_is_popup_editor() ) {
+		$popup    = pum_get_popup();
+		$theme_id = $popup->get_theme_id();
+		$classes  .= ' pum-theme-' . $theme_id;
+
+		wp_enqueue_style( 'popup-maker-site' );
+		// Maybe remove theme styles from the editor. Still testing.
+		remove_editor_styles();
+	}
+
+	return $classes;
+} );
