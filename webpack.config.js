@@ -2,6 +2,8 @@ const webpackMerge = require( 'webpack-merge' );
 const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config.js' );
 const path = require( 'path' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
 
 const production = process.env.NODE_ENV === '';
 
@@ -46,6 +48,7 @@ const config = webpackMerge.strategy(
 				test: /\.(sc|sa|c)ss$/,
 				exclude: /node_modules/,
 				use: [
+					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
@@ -82,6 +85,12 @@ const config = webpackMerge.strategy(
 			},
 		],
 	},
+	plugins: [
+		new MiniCssExtractPlugin( {
+			filename: '[name].css',
+		} ),
+		new IgnoreEmitPlugin( [ /-styles.js$/, /-styles.min.js$/, /-styles.js.map$/ ]),
+	],
 } );
 
 module.exports = config;
