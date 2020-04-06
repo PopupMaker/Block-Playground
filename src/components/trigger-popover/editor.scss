@@ -53,7 +53,7 @@
 		box-shadow: none;
 
 		> svg {
-			@include formatting-button-style__hover;
+			@include button-style__active;
 		}
 	}
 
@@ -61,7 +61,7 @@
 		box-shadow: none;
 
 		> svg {
-			@include formatting-button-style__focus;
+			@include button-style__focus-active;
 		}
 	}
 }
@@ -96,7 +96,7 @@
 }
 
 .block-editor-popup-trigger-popover__popup-viewer-text {
-	margin: $grid-size - $border-width;
+	margin: $grid-unit - $border-width;
 	flex-grow: 1;
 	flex-shrink: 1;
 	overflow: hidden;
