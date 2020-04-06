@@ -1,4 +1,4 @@
 /**
  * Internal dependencies
  */
-require( './popup-trigger' );
+import './popup-trigger';

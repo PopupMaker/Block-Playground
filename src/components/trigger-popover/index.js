@@ -9,8 +9,6 @@ import { IconButton, Popover } from '@wordpress/components';
  * Style Dependencies.
  * import './editor.scss';
  */
-
-
 export default class TriggerPopover extends Component {
 	constructor() {
 		super( ...arguments );
