@@ -1,22 +1,31 @@
 {
   "name": "block-playground",
   "version": "1.0.0",
-  "description": "",
+  "description": "Block Playground",
+  "license": "GPL-v3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PopupMaker/Block-Playground/"
+  },
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses",
-    "lint:css": "wp-scripts lint-style",
+    "format:js": "wp-scripts format-js",
+    "format:js:src": "wp-scripts format-js ./src",
+    "lint:style": "wp-scripts lint-style",
+    "lint:css:src": "wp-scripts lint-style 'src/**/*.css'",
     "lint:js": "wp-scripts lint-js",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "postpackages-update": "npm run build",
     "start": "wp-scripts start",
     "test:e2e": "wp-scripts test-e2e",
     "test:unit": "wp-scripts test-unit-js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "GPL-v3",
   "devDependencies": {
     "@wordpress/base-styles": "^1.0.0",
     "@wordpress/block-editor": "^3.3.0",
@@ -32,14 +41,12 @@
     "@wordpress/scripts": "^6.0.0",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
-    "ignore-emit-webpack-plugin": "^2.0.2",
-    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
-    "npm-install-webpack-plugin": "^4.0.5",
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "@wordpress/block-library": "^2.10.0",
