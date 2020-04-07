@@ -11,11 +11,14 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'PLAYGROUND_FILE', __FILE__ );
+define( 'PUM_BLOCK_PLAYGROUND', '1.0.0' );
 define( 'PLAYGROUND_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PLAYGROUND_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Load all translations for our plugin from the MO file.
+ *
+ * @since 1.0.0
  */
 add_action( 'init', 'block_playground_load_textdomain' );
 function block_playground_load_textdomain() {
@@ -27,6 +30,8 @@ function block_playground_load_textdomain() {
  * the corresponding context.
  *
  * Passes translations to JavaScript.
+ *
+ * @since 1.0.0
  */
 function block_playground_register_editor_assets() {
 
@@ -58,6 +63,9 @@ function block_playground_register_editor_assets() {
 add_action( 'enqueue_block_editor_assets', array( 'PUM_Site_Assets', 'register_styles' ) );
 add_action( 'enqueue_block_editor_assets', 'block_playground_register_editor_assets' );
 
+/**
+ * @since 1.0.0
+ */
 function block_playground_register_block_assets() {
 	$block_styles_path       = 'build/block-styles.css';
 	$block_styles_asset_path = 'build/block-styles.asset.php';
@@ -67,6 +75,9 @@ function block_playground_register_block_assets() {
 
 add_action( 'enqueue_block_assets', 'block_playground_register_block_assets' );
 
+/**
+ * @since 1.1.0
+ */
 add_filter( 'admin_body_class', function ( $classes = '' ) {
 	if ( pum_is_popup_editor() ) {
 		$popup    = pum_get_popup();
