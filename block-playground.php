@@ -27,6 +27,8 @@ function block_playground_load_textdomain() {
  * the corresponding context.
  *
  * Passes translations to JavaScript.
+ *
+ * @since 1.0.0
  */
 function block_playground_register_editor_assets() {
 
@@ -56,6 +58,9 @@ function block_playground_register_editor_assets() {
 add_action( 'enqueue_block_editor_assets', array( 'PUM_Site_Assets', 'register_styles' ) );
 add_action( 'enqueue_block_editor_assets', 'block_playground_register_editor_assets' );
 
+/**
+ * @since
+ */
 function block_playground_register_block_assets() {
 	$style_path       = 'build/block-styles.css';
 	wp_enqueue_style( 'block-playground-block-styles', plugins_url( $style_path, PLAYGROUND_FILE ), array(), filemtime( PLAYGROUND_DIR . $style_path ) );
@@ -63,6 +68,9 @@ function block_playground_register_block_assets() {
 
 add_action( 'enqueue_block_assets', 'block_playground_register_block_assets' );
 
+/**
+ * @since
+ */
 add_filter( 'admin_body_class', function ( $classes = '' ) {
 	if ( pum_is_popup_editor() ) {
 		$popup    = pum_get_popup();

@@ -11,6 +11,9 @@ import { __ } from '@wordpress/i18n';
  */
 const { popups } = window.pum_block_editor_vars;
 
+/**
+ * @since 1.0.0
+ */
 export default class PopupSelectControl extends Component {
 	render() {
 		const {
