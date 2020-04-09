@@ -68,7 +68,6 @@ class InlinePopupTriggerUI extends Component {
 		this.onFocusOutside = this.onFocusOutside.bind( this );
 		this.submitTrigger = this.submitTrigger.bind( this );
 		this.resetState = this.resetState.bind( this );
-		this.autocompleteRef = createRef();
 
 		this.state = {
 			doDefault: false,
@@ -170,15 +169,6 @@ class InlinePopupTriggerUI extends Component {
 	}
 
 	onFocusOutside() {
-		// The autocomplete suggestions list renders in a separate popover (in a portal),
-		// so onFocusOutside fails to detect that a click on a suggestion occurred in the
-		// TriggerContainer. Detect clicks on autocomplete suggestions using a ref here, and
-		// return to avoid the popover being closed.
-		const autocompleteElement = this.autocompleteRef.current;
-		if ( autocompleteElement && autocompleteElement.contains( document.activeElement ) ) {
-			return;
-		}
-
 		this.resetState();
 	}
 
@@ -234,7 +224,6 @@ class InlinePopupTriggerUI extends Component {
 						onKeyDown={ this.onKeyDown }
 						onKeyPress={ stopKeyPropagation }
 						onSubmit={ this.submitTrigger }
-						autocompleteRef={ this.autocompleteRef }
 					/>
 				) : (
 					<PopupTriggerViewer

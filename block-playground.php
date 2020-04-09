@@ -11,11 +11,14 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'PLAYGROUND_FILE', __FILE__ );
+define( 'PUM_BLOCK_PLAYGROUND', '1.0.0' );
 define( 'PLAYGROUND_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PLAYGROUND_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Load all translations for our plugin from the MO file.
+ *
+ * @since 1.0.0
  */
 add_action( 'init', 'block_playground_load_textdomain' );
 function block_playground_load_textdomain() {
@@ -42,8 +45,10 @@ function block_playground_register_editor_assets() {
 		'popups' => pum_get_all_popups(),
 	] );
 
-	$editor_style_path       = 'build/block-editor-styles.css';
-	wp_enqueue_style( 'block-playground-editor-styles', plugins_url( $editor_style_path, PLAYGROUND_FILE ), array(), filemtime( PLAYGROUND_DIR . $editor_style_path ) );
+	$editor_styles_path       = 'build/block-editor-styles.css';
+	$editor_styles_asset_path = 'build/block-editor-styles.asset.php';
+	$editor_styles_asset      = file_exists( PLAYGROUND_DIR . $editor_styles_asset_path ) ? require( PLAYGROUND_DIR . $editor_styles_asset_path ) : array( 'dependencies' => array(), 'version' => filemtime( PLAYGROUND_DIR . $editor_styles_path ) );
+	wp_enqueue_style( 'block-playground-editor-styles', plugins_url( $editor_styles_path, PLAYGROUND_FILE ), array(), $editor_styles_asset['version'] );
 
 	if ( function_exists( 'wp_set_script_translations' ) ) {
 		/**
@@ -59,17 +64,19 @@ add_action( 'enqueue_block_editor_assets', array( 'PUM_Site_Assets', 'register_s
 add_action( 'enqueue_block_editor_assets', 'block_playground_register_editor_assets' );
 
 /**
- * @since
+ * @since 1.0.0
  */
 function block_playground_register_block_assets() {
-	$style_path       = 'build/block-styles.css';
-	wp_enqueue_style( 'block-playground-block-styles', plugins_url( $style_path, PLAYGROUND_FILE ), array(), filemtime( PLAYGROUND_DIR . $style_path ) );
+	$block_styles_path       = 'build/block-styles.css';
+	$block_styles_asset_path = 'build/block-styles.asset.php';
+	$block_styles_asset      = file_exists( PLAYGROUND_DIR . $block_styles_asset_path ) ? require( PLAYGROUND_DIR . $block_styles_asset_path ) : array( 'dependencies' => array(), 'version' => filemtime( PLAYGROUND_DIR . $block_styles_path ) );
+	wp_enqueue_style( 'block-playground-block-styles', plugins_url( $block_styles_path, PLAYGROUND_FILE ), array(), $block_styles_asset['version'] );
 }
 
 add_action( 'enqueue_block_assets', 'block_playground_register_block_assets' );
 
 /**
- * @since
+ * @since 1.1.0
  */
 add_filter( 'admin_body_class', function ( $classes = '' ) {
 	if ( pum_is_popup_editor() ) {

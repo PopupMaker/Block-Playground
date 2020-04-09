@@ -22,16 +22,12 @@ $input-size: 300px;
 	input[type="text"],
 	select {
 		width: 100%;
-		height: auto;
 
 		@include break-small() {
 			width: $input-size;
 		}
-		padding: $input-padding;
 		border: none;
 		border-radius: 0;
-		margin-left: 0;
-		margin-right: 0;
 
 		/* Fonts smaller than 16px causes mobile safari to zoom. */
 		font-size: $mobile-text-min-font-size;
@@ -44,6 +40,4 @@ $input-size: 300px;
 			display: none;
 		}
 	}
-
-
 }
